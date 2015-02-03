@@ -16,13 +16,14 @@ public class WebServer
 		System.out.println("waiting for response");
 		for(;;) {
 			try{
-				Socket remote = s.accept();
+				Socket remote = s.accept(); // remote is now the connected socket
 				System.out.println("connection,sending data");
 				BufferedReader in = new BufferedReader(remote.getInputStream()));
 				PrintWriter out = new PrintWriter(remote.getOutputStream());
 				String str = ".";
 				while(!str.equals(""))
 					str = in.readLine();
+				//Send the response
 				out.println("HTTP/1.0 200 OK");
 				out.println("Content-Type:text/html");
 				out.printtln("<H1> WELCOME </H1>")
